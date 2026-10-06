@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0e1620" />
+<title>会说话的汤姆猫 · 课堂互动</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- 场景 + 汤姆猫全部画在这块画布上 -->
+  <canvas id="stage"></canvas>
+
+  <!-- 对话框（DOM 更好排版中文） -->
+  <div id="bubble" class="bubble"><span id="bubbleText"></span></div>
+
+  <!-- 上方：标题 / 变声 / 退出 -->
+  <header class="topbar">
+    <div class="brand"><span class="dot"></span>会说话的汤姆猫</div>
+    <div class="pitchbox">
+      <span class="plabel">变声</span>
+      <input id="pitch" type="range" min="-8" max="14" step="1" value="6" aria-label="变声音高" />
+      <span id="pitchVal" class="pval">+6</span>
+    </div>
+    <button id="btnExit" class="exit">退出</button>
+  </header>
+
+  <div class="hint" id="hint">点 🎤 说话 · 点道具互动 · 键盘 1 / 2 / 3 · 空格说话</div>
+
+  <!-- 下方道具栏 -->
+  <footer class="dock" id="dock">
+    <button class="prop" data-act="sweep"><i>🧹</i><b>扫把</b></button>
+    <button class="prop" data-act="eat"><i>🍰</i><b>蛋糕</b></button>
+    <button class="prop" data-act="tickle"><i>🪶</i><b>痒痒挠</b></button>
+    <button id="btnMic" class="mic"><i>🎤</i><b id="micLabel">点我说话</b></button>
+    <button class="prop" data-act="meow"><i>🐾</i><b>摸摸头</b></button>
+  </footer>
+
+  <div class="meter" id="meter"><span></span></div>
+
+  <!-- 开始遮罩：同时用于解锁浏览器音频 -->
+  <div class="gate" id="gate">
+    <div class="card">
+      <h1>🐱 会说话的汤姆猫</h1>
+      <p>
+        ① 点下方 <b>🎤 麦克风</b>，允许使用麦克风<br />
+        ② 对着电脑说话，再点一次结束<br />
+        ③ 汤姆猫会用 <b>变声器</b> 把你的话重复一遍<br />
+        ④ 试试 <b>🧹 扫把</b> · <b>🍰 蛋糕</b> · <b>🪶 痒痒挠</b>
+      </p>
+      <button id="btnStart" class="start">开始玩</button>
+      <small id="gateNote"></small>
+    </div>
+  </div>
+
+  <!-- 退出遮罩 -->
+  <div class="gate bye" id="bye">
+    <div class="card">
+      <h1>再见啦！</h1>
+      <p>汤姆猫已经休息了～</p>
+      <button id="btnAgain" class="start">再玩一次</button>
+    </div>
+  </div>
+
+  <script src="js/audio.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/cat.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
